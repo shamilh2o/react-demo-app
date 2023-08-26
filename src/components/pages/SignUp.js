@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Table from '../Table';
+import Plot from '../Plot';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,7 +52,7 @@ export default function SignUp() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Material UI Tables" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Plots" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
@@ -59,7 +60,7 @@ export default function SignUp() {
         <Table />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Plot />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
