@@ -1,67 +1,61 @@
-import React from "react";
-import '../../App.css';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Line } from "react-chartjs-2";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
+const Img = styled('img')({
+  margin: 'auto',
+  display: 'block',
+  maxWidth: '100%',
+  maxHeight: '100%',
+});
+
+export default function ComplexGrid() {
+  return (
+    <Paper
+      sx={{
+        p: 2,
+        margin: 'auto',
+        maxWidth: 500,
+        flexGrow: 1,
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item>
+          <ButtonBase sx={{ width: 128, height: 128 }}>
+            <Img alt="complex" src="/images/img-2.jpg" />
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={2}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                Standard license
+              </Typography>
+              <Typography variant="body2" gutterBottom>
+                Full resolution 1920x1080 • JPEG
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                ID: 1030114
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography sx={{ cursor: 'pointer' }} variant="body2">
+                Remove
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1" component="div">
+              $19.00
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
   );
-
-const labels = ["2017", "2018", "2019", "2020", "2021", "2022"];
-const options = {
-    plugins: {
-        legend: {
-            position: 'bottom',
-        }
-    }
-};
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: "React",
-            data: [32, 42, 51, 60, 51, 95],
-            backgroundColor: "#2196F3",
-            borderColor: "#2196F3",
-        },
-        {
-            label: "Angular",
-            data: [37, 42, 41, 37, 31, 44],
-            backgroundColor: "#F44236",
-            borderColor: "#F44236",
-        },
-        {
-            label: "Vue",
-            data: [60, 54, 54, 28, 27, 49],
-            backgroundColor: "#FFCA26",
-            borderColor: "#FFCA26",
-        },
-    ],
 }
-
-function Services() {
-    return (
-        <>
-            <div style={{width: 600, height: 300}}>
-                <Line options={options} data={data} />
-            </div>
-        </>
-    );
-}
-
-export default Services;
